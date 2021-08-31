@@ -53,6 +53,11 @@ namespace Comercio.MVC.Application.Usuario
             return _usuarioRepositoryReadOnly.BuscaUsuarios();
         }
 
+        public bool ExisteUsuarios()
+        {
+            return _usuarioRepositoryReadOnly.ExisteUsuarios();
+        }
+
         public Domain.Models.UsuarioModel.Usuario VerificaLogin(string email, string senha)
         {
             return _usuarioRepositoryReadOnly.VerificaLogin(email, senha);

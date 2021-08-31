@@ -27,9 +27,9 @@ namespace Comercio.MVC.Controllers
         }
         public IActionResult Cadastro()
         {
-            var usuarios = _usuarioApplication.BuscaUsuarios();
+            var existeUsuarios = _usuarioApplication.ExisteUsuarios();
 
-            if (!usuarios.Any())
+            if (!existeUsuarios)
             {
                 return View();
             }

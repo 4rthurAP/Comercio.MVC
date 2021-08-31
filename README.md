@@ -1,7 +1,9 @@
 # Comercio.MVC
  
-1 - Trocar a connection string em DeafultConnection em appsettings 
+1 - execute esse comando no nuget add-migration One -Project Comercio.MVC.Infra 
 
-2 - usar o cmd Nuget e digitar o comando Update-database
+2 - Trocar a connection string em DeafultConnection em appsettings 
 
-3-Criar o primeiro usuario como admin
+3 - usar o cmd Nuget e digitar o comando Update-database
+
+4 -Criar o primeiro usuario como admin

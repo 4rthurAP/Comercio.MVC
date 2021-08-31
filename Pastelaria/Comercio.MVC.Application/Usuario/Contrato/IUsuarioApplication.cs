@@ -17,6 +17,7 @@ namespace Comercio.MVC.Application.Usuario.Contrato
         Task Deletar(Domain.Models.UsuarioModel.Usuario usuario);
         Task Alterar(Domain.Models.UsuarioModel.Usuario usuario);
         ICollection<Domain.Models.UsuarioModel.Usuario> BuscaUsuarios();
+        bool ExisteUsuarios();
 
     }
 }

@@ -60,5 +60,9 @@ namespace Comercio.MVC.Infra.Repositories.RepositoryReadOnly
         {
             return _context.Usuarios.ToList();
         }
+        public bool ExisteUsuarios()
+        {
+            return _context.Usuarios.ToList().Any();
+        }
     }
 }
