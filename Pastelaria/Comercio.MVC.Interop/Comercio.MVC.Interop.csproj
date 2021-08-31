@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Cadastro\Dto\" />
+    <Folder Include="Login\Dto\" />
+    <Folder Include="Tarefa\Dto\" />
+    <Folder Include="Usuario\ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DataAnnotationsExtensions" Version="5.0.1.27" />
+  </ItemGroup>
+
+</Project>

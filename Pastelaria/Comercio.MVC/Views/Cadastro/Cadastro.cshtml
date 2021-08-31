@@ -1,0 +1,81 @@
+﻿@model Comercio.MVC.Interop.Cadastro.CadastroViewModel
+
+@{ ViewData["Title"] = "Cadastro";
+    Layout = "_Layout"; }
+
+<div class="container">
+    <div class="cadastro justify-content-center text-center row">
+        <div class="cadastro-content col-lg-4">
+            <div class="titulo">
+                <h3 class="text-center">Cadastro de usuário</h3>
+                <h5 class="text-center">Insira suas informações de login</h5>
+            </div>
+            <form asp-action="Cadastro" method="post" enctype="multipart/form-data">
+                <div class="formCadastro text-left">
+
+                    <div class="mb-3">
+                        <label class="form-label">Nome Completo</label>
+                        <input type="text" placeholder="Nome Completo" asp-for="Nome" class="form-control text-capitalize" required />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Telefone Fixo</label>
+                        <input type="text" placeholder="Telefone Fixo" asp-for="TelefoneFixo" id="TelefoneFixo" class="form-control" required />
+                        <span asp-validation-for="TelefoneFixo" class="text-danger"></span>
+
+                        <label class="form-label">Telefone Celular</label>
+                        <input type="text" placeholder="Telefone Celular" asp-for="TelefoneCelular" id="TelefoneCelular" class="form-control" required />
+                        <span asp-validation-for="TelefoneCelular" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" placeholder="Email" asp-for="Email" class="form-control" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Endereço</label>
+                        <input placeholder="Endereco" asp-for="Endereco" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Data de nascimento</label>
+                        <input type="date" placeholder="Data de nascimento" asp-for="DataDeNascimento" class="form-control" required />
+                        <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Senha</label>
+                        <input type="password" placeholder="Senha" asp-for="Senha" class="form-control" required />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+
+                        <label class="form-label">Confirmar Senha</label>
+                        <input type="password" placeholder="Confirmar Senha" asp-for="ConfirmarSenha" class="form-control" required />
+                        <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="IsAdmin"/>
+                        <label class="form-check-label" for="exampleCheck1">É Admin?</label>
+                        <span asp-validation-for="IsAdmin" class="text-danger"></span>
+                    </div>
+                    <div>@ViewBag.CadastroSucesso</div>
+
+                    <div class="divCadastro" style="margin-top:45px;">
+                        <input type="submit" value="Cadastrar" id="cadastrar" class="btn btn-block btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
+    <script>$(document).ready(function () {
+                $('#TelefoneCelular').mask('(00) 00000-0000');
+                $('#Telefonefixo').mask('0000-0000');
+        });</script>
+}
+
