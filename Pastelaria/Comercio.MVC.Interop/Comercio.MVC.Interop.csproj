@@ -7,6 +7,7 @@
   <ItemGroup>
     <Folder Include="Cadastro\Dto\" />
     <Folder Include="Login\Dto\" />
+    <Folder Include="Senha\" />
     <Folder Include="Tarefa\Dto\" />
     <Folder Include="Usuario\ViewModel\" />
   </ItemGroup>
