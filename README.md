@@ -6,4 +6,6 @@
 
 3 - usar o cmd Nuget e digitar o comando Update-database
 
-4 -Criar o primeiro usuario como admin
+4 - Criar o primeiro usuario como admin
+
+Qual quer duvida, entre em contato comigo arthuraapsilva@gmail.com
