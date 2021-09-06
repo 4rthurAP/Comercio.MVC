@@ -38,7 +38,7 @@ namespace Comercio.MVC.Controllers
                 if (HttpContext.Session.GetString("IsAdmin") == "True")
                     return View();
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -58,20 +58,26 @@ namespace Comercio.MVC.Controllers
                 ModelState.AddModelError("Senha", "As senhas não correspondem.");
             }
 
-            try
+            if (ModelState.IsValid)
             {
-                var usuario = _mapper.Map<Usuario>(cadastroModel);
+                try
+                {
+                    var usuario = _mapper.Map<Usuario>(cadastroModel);
 
-                _usuarioApplication.Cadastrar(usuario);
+                    usuario.DataDeNascimento.ToShortDateString();
+                    
+                    _usuarioApplication.Cadastrar(usuario);
+                }
+                catch (Exception ex)
+                {
+                    throw ex.InnerException;
+                }
+
+                ViewBag.CadastroSucesso = "Usuario cadastrado com sucesso!";
+
+                return View();
             }
-            catch (Exception ex)
-            {
-                throw ex.InnerException;
-            }
-
-            ViewBag.CadastroSucesso = "Usuario cadastrado com sucesso!";
-
-            return RedirectToAction("Perfil", "Login");
+            return View();
         }
     }
 }

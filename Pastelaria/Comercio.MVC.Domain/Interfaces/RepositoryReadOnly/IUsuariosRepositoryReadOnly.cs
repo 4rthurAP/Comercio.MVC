@@ -16,7 +16,7 @@ namespace Comercio.MVC.Domain.Interfaces.RepositoryReadOnly
         bool VerificaEmailUsuarioExiste(string email);
         Usuario VerificaLogin(string email, string senha);
         ICollection<Usuario> BuscaUsuarios();
-
         bool ExisteUsuarios();
+        string BuscaEmail(string email);
     }
 }

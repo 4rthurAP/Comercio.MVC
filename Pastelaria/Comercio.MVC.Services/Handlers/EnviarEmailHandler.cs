@@ -10,25 +10,44 @@ namespace Comercio.MVC.Services.Handlers
 {
     public class EnviarEmailHandler
     {
-        public EnviarEmailHandler()
+        public void EmailFuncionarioHandler(string to)
         {
-
-        }
-
-        public void EmailHandler(string to, string from)
-        {
-
-
-            MailMessage message = new MailMessage(from, to);
-            message.Subject = "Good morning, Elizabeth";
-            message.Body = $"Voce Recebeu uma Tarefa para {DateTime.Now}";
+            MailMessage message = new MailMessage("enviaremailarthur@gmail.com", to);
+            message.Subject = "Tarefa pra fazer";
+            message.Body = $"Voce Recebeu uma Tarefa as {DateTime.Now}.";
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("smtp_username", "smtp_password"),
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("enviaremailarthur@gmail.com", "@@Send@@12"),
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network
+            };  
+            
+            try
+            {
+                client.SendMailAsync(message);
+            }
+            catch (SmtpException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public void EmailManagerHandler(string to, string nome)
+        {
+            
+            var mailAddress = new MailAddress(to);
+            MailMessage message = new MailMessage("enviaremailarthur@gmail.com", to);
+            message.Subject = "Tarefa feita";
+            message.Body = $"O funcionario {nome} terminou a tarefa as {DateTime.Now}.";
+
+            SmtpClient client = new SmtpClient("smtp.gmail.com")
+            {
+                Credentials = new NetworkCredential("enviaremailarthur@gmail.com", "@@Send@@12"),
                 EnableSsl = true
             };
-            // code in brackets above needed if authentication required
+
             try
             {
                 client.Send(message);

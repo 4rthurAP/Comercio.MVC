@@ -3,6 +3,7 @@ using Comercio.MVC.Application.Tarefa.Contrato;
 using Comercio.MVC.Application.Usuario.Contrato;
 using Comercio.MVC.Domain.Models.TarefaModel;
 using Comercio.MVC.Interop.Tarefa.ViewModel;
+using Comercio.MVC.Services.Handlers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,16 +16,20 @@ namespace Comercio.MVC.Controllers
 {
     public class TarefasController : Controller
     {
+        private readonly EnviarEmailHandler _enviarEmailHandler;
         private readonly ITarefaApplication _tarefaApplication;
         private readonly IUsuarioApplication _usuarioApplication;
         private readonly IMapper _mapper;
         public TarefasController(ITarefaApplication tarefaApplication,
             IUsuarioApplication usuarioApplication,
-            IMapper mapper)
+            IMapper mapper,
+            EnviarEmailHandler enviarEmailHandler
+            )
         {
             _usuarioApplication = usuarioApplication;
             _tarefaApplication = tarefaApplication;
             _mapper = mapper;
+            _enviarEmailHandler = enviarEmailHandler;
         }
         // GET: HomeController1
         public ActionResult Index()
@@ -49,20 +54,23 @@ namespace Comercio.MVC.Controllers
         // POST: HomeController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TarefaViewModel tarefaViewModel, IFormCollection collection)
+        public ActionResult Create(TarefaViewModel tarefaViewModel)
         {
             try
             {
                 var tarefa = _mapper.Map<Tarefa>(tarefaViewModel);
 
-                var usuarios = _usuarioApplication.BuscaUsuarios();
+                var usuario = _usuarioApplication.UsuarioBuscaId(tarefa.UsuarioId);
+
+                _enviarEmailHandler.EmailFuncionarioHandler(usuario.Email);
 
                 _tarefaApplication.Cadastrar(tarefa);
-                ViewBag.TarefaCriada = "Tarefa criada com sucesso";
+
                 return RedirectToAction("Perfil","Login");
             }
-            catch
+            catch(Exception ex)
             {
+                ViewBag.ErroEmail = ex.Message;
                 return View();
             }
         }
@@ -83,6 +91,13 @@ namespace Comercio.MVC.Controllers
                 var tarefa = _tarefaApplication.BuscaUsuarioPorId(id);
 
                 _tarefaApplication.Alterar(tarefa);
+
+                var usuario =  _usuarioApplication.UsuarioBuscaId(tarefa.UsuarioId);
+
+                if(tarefa.IsDone)
+                {
+                    _enviarEmailHandler.EmailManagerHandler(usuario.Email, usuario.Nome);
+                }
 
                 return RedirectToAction("Perfil", "Login");
             }

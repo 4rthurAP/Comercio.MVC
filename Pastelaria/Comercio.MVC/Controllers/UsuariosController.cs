@@ -44,13 +44,14 @@ namespace Comercio.MVC.Controllers
         // POST: UsuariosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(int id)
         {
             try
             {
                 var usuario = _usuariosApplication.UsuarioBuscaId(id);
 
                 _usuariosApplication.Alterar(usuario);
+
 
                 return RedirectToAction(nameof(Index));
             }

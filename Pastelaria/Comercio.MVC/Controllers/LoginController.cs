@@ -32,7 +32,7 @@ namespace Comercio.MVC.Controllers
             if (usuario is null)
             {
                 ViewBag.Erro = "Não foi possível realizar login. Dados incorretos!";
-                return RedirectToAction("Index", "Home");
+                return View();
             }
 
             StartSessionLogin(usuario);
@@ -65,6 +65,8 @@ namespace Comercio.MVC.Controllers
 
             var usuario = _usuarioApplication.UsuarioBuscaId(id);
 
+            usuario.DataDeNascimento.ToShortDateString();
+            
             return View(usuario);
         }
         private void StartSessionLogin(Usuario usuario)

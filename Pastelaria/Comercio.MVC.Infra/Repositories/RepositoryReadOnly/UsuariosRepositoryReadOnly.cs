@@ -64,5 +64,13 @@ namespace Comercio.MVC.Infra.Repositories.RepositoryReadOnly
         {
             return _context.Usuarios.ToList().Any();
         }
+
+        public string BuscaEmail(string email)
+        {
+
+            var usuario = _context.Usuarios.Where(m => m.Email.Equals(email)).FirstOrDefault();
+
+            return usuario.Email;
+        }
     }
 }

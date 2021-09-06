@@ -10,6 +10,7 @@ using Comercio.MVC.Infra.Repositories.Repository;
 using Comercio.MVC.Infra.Repositories.RepositoryReadOnly;
 using Comercio.MVC.Mapper;
 using Comercio.MVC.Services.Criptografia;
+using Comercio.MVC.Services.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -50,6 +51,7 @@ namespace Comercio.MVC
             services.AddScoped<ITarefaRepository, TarefaRepository>();
             services.AddScoped<ITarefaRepositoryReadOnly, TarefaRepositoryReadOnly>();
             services.AddScoped<ITarefaApplication, TarefaApplication>();
+            services.AddScoped<EnviarEmailHandler, EnviarEmailHandler>();
 
             services.AddSession();
             
