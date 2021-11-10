@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D25FE8D-4066-4CDF-A3E7-7C1206551B17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\UsuarioApplicationTest.cs" />
+    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bogus">
+      <Version>33.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Moq">
+      <Version>4.16.1</Version>
+    </PackageReference>
+    <PackageReference Include="MSTest.TestAdapter">
+      <Version>2.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="MSTest.TestFramework">
+      <Version>2.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit">
+      <Version>3.13.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comercio.MVC.Application\Comercio.MVC.Application.csproj">
+      <Project>{129e6309-0084-4f9a-9a9e-3d50ba920ad3}</Project>
+      <Name>Comercio.MVC.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comercio.MVC.Domain\Comercio.MVC.Domain.csproj">
+      <Project>{03b78e69-1f39-4cd0-a109-9e2c36d03cc7}</Project>
+      <Name>Comercio.MVC.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comercio.MVC.Infra\Comercio.MVC.Infra.csproj">
+      <Project>{15eeca0f-98cc-48cc-9391-5af788cf3625}</Project>
+      <Name>Comercio.MVC.Infra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comercio.MVC.Interop\Comercio.MVC.Interop.csproj">
+      <Project>{21f5d3e1-50ea-4482-9fc4-50130fa0c70b}</Project>
+      <Name>Comercio.MVC.Interop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comercio.MVC.Services\Comercio.MVC.Services.csproj">
+      <Project>{91bfc808-69be-4082-b233-9f7c370ff096}</Project>
+      <Name>Comercio.MVC.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comercio.MVC\Comercio.MVC.csproj">
+      <Project>{cc5a5264-2fb5-4154-accd-d650a86fe68f}</Project>
+      <Name>Comercio.MVC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

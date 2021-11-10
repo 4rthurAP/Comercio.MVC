@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06-Interop", "06-Interop", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comercio.MVC.Interop", "..\Comercio.MVC.Interop\Comercio.MVC.Interop.csproj", "{21F5D3E1-50EA-4482-9FC4-50130FA0C70B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{520FF5F1-4D64-490F-81F2-A5325A6B7895}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

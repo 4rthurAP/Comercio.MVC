@@ -5,12 +5,8 @@ using Comercio.MVC.Interop.Cadastro;
 using Comercio.MVC.Services.Criptografia;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
 
 namespace Comercio.MVC.Controllers
 {
@@ -75,7 +71,7 @@ namespace Comercio.MVC.Controllers
 
                 ViewBag.CadastroSucesso = "Usuario cadastrado com sucesso!";
 
-                return View();
+                return View("Cadastro");
             }
             return View();
         }

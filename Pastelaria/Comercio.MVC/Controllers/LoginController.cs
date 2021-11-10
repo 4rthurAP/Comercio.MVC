@@ -79,6 +79,7 @@ namespace Comercio.MVC.Controllers
             HttpContext.Session.SetString("Id", usuario.Id.ToString());
         }
 
+        [HttpGet]
         public void Logout()
         {
             HttpContext.Session.Remove("IsAdmin");

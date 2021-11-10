@@ -21,19 +21,16 @@ namespace Comercio.MVC.Controllers
             _mapper = mapper;
             _usuariosApplication = usuariosApplication;
         }
-        // GET: UsuariosController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: UsuariosController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: UsuariosController/Edit/5
         public ActionResult Edit(int id)
         {
             if (String.IsNullOrEmpty(HttpContext.Session.GetString("Id")))
@@ -41,7 +38,6 @@ namespace Comercio.MVC.Controllers
             return View();
         }
 
-        // POST: UsuariosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id)
@@ -61,13 +57,11 @@ namespace Comercio.MVC.Controllers
             }
         }
 
-        // GET: UsuariosController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: UsuariosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
