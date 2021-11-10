@@ -43,11 +43,14 @@ namespace Comercio.MVC.Controllers
         {
             Cryptography cryptography = new Cryptography(MD5.Create());
 
-            if (_usuarioApplication.EmailExiste(cadastroModel.Email)) ModelState.AddModelError("Email", "O e-mail inserido já cadastrado!");
+            if (_usuarioApplication.EmailExiste(cadastroModel.Email)) ModelState
+                    .AddModelError("Email", "O e-mail inserido já cadastrado!");
 
-            if (_usuarioApplication.TelefoneFixoExiste(cadastroModel.TelefoneFixo)) ModelState.AddModelError("Telefone Fixo", "O telefone inserido já cadastrado!");
+            if (_usuarioApplication.TelefoneFixoExiste(cadastroModel.TelefoneFixo)) ModelState
+                    .AddModelError("Telefone Fixo", "O telefone inserido já cadastrado!");
 
-            if (_usuarioApplication.TelefoneCelularExiste(cadastroModel.TelefoneCelular)) ModelState.AddModelError("Telefone Fixo", "O telefone inserido já cadastrado!");
+            if (_usuarioApplication.TelefoneCelularExiste(cadastroModel.TelefoneCelular)) ModelState
+                    .AddModelError("Telefone Fixo", "O telefone inserido já cadastrado!");
 
             if (!cryptography.HashVerify(cadastroModel.ConfirmarSenha, cadastroModel.Senha))
             {
